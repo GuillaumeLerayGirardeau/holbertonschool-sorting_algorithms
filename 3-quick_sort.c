@@ -10,8 +10,9 @@
  *
  * Return: new pivot point
  */
-int swap_array(int *array, size_t start, size_t end, size_t size)
+size_t swap_array(int *array, size_t start, size_t end, size_t size)
 {
+	size_t result;
 	int temp = 0, i = -1;
 	size_t j = start;
 
@@ -37,7 +38,8 @@ int swap_array(int *array, size_t start, size_t end, size_t size)
 		array[end] = temp;
 		print_array(array, size);
 	}
-	return (i);
+	result = i;
+	return (result);
 
 }
 /**
@@ -50,7 +52,7 @@ int swap_array(int *array, size_t start, size_t end, size_t size)
 void quick_sort(int *array, size_t size)
 {
 	size_t end = size - 1, start = 0;
-	int result = 0;
+	size_t result = 0;
 
 	if (array == NULL || size < 2)
 		return;
@@ -67,7 +69,8 @@ void quick_sort(int *array, size_t size)
 	}
 	while (end > start)
 	{
-		swap_array(array, start, end, size);
-		end--;
+		result = swap_array(array, start, end, size);
+		if (result == end)
+			end--;
 	}
 }
